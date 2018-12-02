@@ -51,7 +51,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
 }
 .header__notification {
@@ -94,7 +94,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
 }
 .sidebar__icon {
@@ -112,7 +112,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
   }
 }
@@ -126,12 +126,29 @@
 .main__topbar {
   grid-area: topbar;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.main__topbar .tab {
+  position: relative;
+  bottom: -1px;
 }
 .main__topbar .search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
   margin-left: auto;
 }
 .main__topbar .search__input {
-  display: none;
+  margin-left: 26px;
+}
+.main__topbar .search__btn {
+  position: relative;
+  right: 36px;
 }
 
 .user-thumbnail {
@@ -149,6 +166,7 @@
 
 .tab {
   padding: 20px;
+  height: 61px;
 }
 
 .btn-search {
@@ -156,14 +174,18 @@
   border: none;
 }
 
-.search {
-  float: right;
-  display: block;
-  height: 40px;
-  border-radius: 4px;
+.search__input {
+  flex: 1;
+  max-width: 300px;
+  padding-left: 10px;
+  line-height: 2.4;
+  border: 1px solid #E0E0E0;
+  border-radius: 21px;
+  transition: 0.2s ease;
 }
 .search__input:focus {
-  outline: 1px solid #747ABF;
+  outline: none;
+  box-shadow: 0px 4px 16px -5px rgba(0, 0, 0, 0.15);
 }
 .search__btn {
   cursor: pointer;
@@ -217,9 +239,6 @@
 }
 
 .tab {
-  position: relative;
-  top: 1px;
-  box-sizing: content-box;
   border-right: 1px solid #E0E0E0;
   border-bottom: 1px solid white;
   background: white;

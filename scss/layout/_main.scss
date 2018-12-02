@@ -8,12 +8,25 @@
 
     &__topbar {
         grid-area: topbar;
-        display: flex;
+        @include flex($align: center);
+
+        .tab {
+            position: relative;
+            bottom: -1px;
+        }
 
         .search {
+            @include flex($align: center);
             margin-left: auto;
+
             &__input {
-                display: none;
+                // display: none;
+                margin-left: 26px;
+            }
+
+            &__btn {
+                position: relative;
+                right: 36px;
             }
         }
         

@@ -1,7 +1,7 @@
 # A Chart App
 This was the project #7 of the [Treehouse Front End Web Development Techdegree](https://teamtreehouse.com/techdegree/front-end-web-development-2). <br>
 CSS Grid is AAAWWWWWWEEEESOME!!<br>
-
+Please note that this App interface is for front-end practice only. It does not have soul(backe-end), so don't expect anything to actually work.
 
 ## Instruction From Treehouse
 > In this project, you'll take a mockup and a few icons and build a beautiful, web dashboard complete with JavaScript-driven charts and graphs. You only need to take the design and create the HTML, CSS and JavaScript functionality for this one page -- you don't need to create other pages, or build any backend or database functionality.
