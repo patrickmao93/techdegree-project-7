@@ -1,0 +1,21 @@
+.icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+}
+
+.tab {
+    padding: 20px;
+    border-right: 1px solid $color-border;
+    background: $color-secondary;
+
+    text-decoration: none;
+    color: $font-color-secondary;
+    font-family: $font-primary;
+}
+
+.btn-search {
+    background: $color-secondary;
+    border: none;
+}

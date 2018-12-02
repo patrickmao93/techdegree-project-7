@@ -1,0 +1,21 @@
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: 
+        "topbar"
+        "content";
+
+    &__topbar {
+        grid-area: topbar;
+        display: flex;
+
+        .search {
+            margin-left: auto;
+            &__input {
+                display: none;
+            }
+        }
+        
+    }
+}

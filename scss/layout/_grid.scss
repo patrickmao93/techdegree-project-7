@@ -1,0 +1,33 @@
+.page {
+    height: 100vh;
+    display: grid;
+    min-width: 320px;
+
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-areas: 
+        "header"
+        "main"
+        "sidebar";
+
+    @include media('md') {
+
+    }
+
+    @include media('lg') {
+        grid-template-rows: 80px 1fr;
+        grid-template-columns: 70px 1fr;
+        grid-template-areas: 
+            "header header"
+            "sidebar main";
+    }
+}
+
+
+.main {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    grid-template-areas:
+        "topbar"
+        "content"; 
+}
+

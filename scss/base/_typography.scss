@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.logo,
+.user-name {
+    font-family: $font-primary;
+}
+
+.logo {
+    font-size: 1.5em;
+    margin-right: auto;
+    padding: 28px 20px;
+    color: $font-color-primary-dark;
+    font-weight: 100;
+
+    &__strong {
+        color: $font-color-primary;
+        font-weight: bold;
+    }
+
+    .trademark {
+        font-size: 0.5em;
+        vertical-align: 10px;
+    }
+}

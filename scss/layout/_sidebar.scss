@@ -1,0 +1,25 @@
+.sidebar {
+    background: $color-primary-dark;
+    grid-area: sidebar;
+
+    &__icon {
+        cursor: pointer;
+        
+        padding: 10px;
+
+        @include media('lg') {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+    
+    @include flex($just: space-evenly);
+
+    @include media('md') {
+        
+    }
+
+    @include media('lg') {
+        @include flex($just: flex-start, $dir: column);
+    }
+}

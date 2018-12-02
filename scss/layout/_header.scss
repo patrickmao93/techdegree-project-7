@@ -1,0 +1,39 @@
+.header {
+    grid-area: header;
+    @include flex();
+
+    &__notification {
+        height: 24px;
+        width: 24px;
+        display: block;
+        margin: 20px;
+        position: relative;
+    }
+
+    .notification-dot {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        @include roundy(6px);
+    }
+
+    &__user {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .user-thumbnail,
+        .user-name {
+            display: inline-block;
+            vertical-align: middle;
+            
+        }
+
+        .user-name {
+            margin-left: 10px;
+            display: none;
+            @include media('md') {
+                display: inline-block;
+            }
+        }
+    }
+}

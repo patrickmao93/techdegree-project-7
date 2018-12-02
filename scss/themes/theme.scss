@@ -1,0 +1,40 @@
+.header,
+.sidebar
+.message,
+.btn {
+    color: $font-color-primary;
+}
+
+.header {
+    background: $color-primary;
+    
+    &__user {
+        border-left: 1px solid $color-primary-dark;
+    }
+}
+
+.logo {
+    color: $font-color-primary-dark;
+
+    &__strong {
+        color: $font-color-primary;
+    }
+}
+
+.notification-dot {
+    background: $color-success;
+}
+
+.sidebar__icon {
+    opacity: 0.5;
+
+    &--active {
+        opacity: 1;
+        border-bottom: 2px solid $color-success;
+
+        @include media('lg') {
+            height: auto;
+            border-left: 2px solid $color-success;
+        }
+    }
+}

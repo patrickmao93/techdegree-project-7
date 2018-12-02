@@ -1,0 +1,16 @@
+.search {
+    float: right;   
+    display: block;
+    height: 40px;
+    border-radius: 4px;
+
+    &__input:focus {
+        outline: 1px solid $color-primary; 
+    }
+
+    &__btn {
+        cursor: pointer;
+        background: transparent;
+        border: none;
+    }
+}
