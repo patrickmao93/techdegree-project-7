@@ -141,19 +141,14 @@
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   display: block;
   margin: auto;
 }
 
 .tab {
   padding: 20px;
-  border-right: 1px solid #E0E0E0;
-  background: white;
-  text-decoration: none;
-  color: #6A6A6A;
-  font-family: "Varela", sans-serif;
 }
 
 .btn-search {
@@ -205,13 +200,32 @@
 }
 .sidebar__icon--active {
   opacity: 1;
+  border-left: none;
   border-bottom: 2px solid #7FDC85;
 }
 @media (min-width: 1024px) {
   .sidebar__icon--active {
     height: auto;
     border-left: 2px solid #7FDC85;
+    border-bottom: none;
   }
+}
+
+.main__topbar {
+  background: #FBFBFB;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.tab {
+  position: relative;
+  top: 1px;
+  box-sizing: content-box;
+  border-right: 1px solid #E0E0E0;
+  border-bottom: 1px solid white;
+  background: white;
+  text-decoration: none;
+  color: #6A6A6A;
+  font-family: "Varela", sans-serif;
 }
 
 /*# sourceMappingURL=index.css.map */

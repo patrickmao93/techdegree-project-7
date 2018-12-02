@@ -30,11 +30,32 @@
 
     &--active {
         opacity: 1;
+        border-left: none;
         border-bottom: 2px solid $color-success;
 
         @include media('lg') {
             height: auto;
             border-left: 2px solid $color-success;
+            border-bottom: none;
         }
     }
+}
+
+.main {
+    &__topbar {
+        background: $color-tertiary;
+        border-bottom: 1px solid $color-border;
+    }
+}
+
+.tab {
+    position: relative;
+    top: 1px;
+    box-sizing: content-box;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid white;
+    background: $color-secondary;
+    text-decoration: none;
+    color: $font-color-secondary;
+    font-family: $font-primary;
 }
