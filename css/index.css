@@ -237,6 +237,10 @@
   width: 100%;
 }
 
+canvas {
+  max-width: 100%;
+}
+
 .user-thumbnail {
   width: 40px;
   height: 40px;

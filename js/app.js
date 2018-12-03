@@ -54,7 +54,7 @@ var chartTraffic = new Chart(traffic, {
     }, 
     options: {
         responsive: true,
-        aspectRatio: 3,
+        maintainAspectRatio: true,
         legend: false,
     }
 });
@@ -76,6 +76,8 @@ var chartDailyTraffic = new Chart(dailyTraffic, {
         }]
     }, 
     options: {
+        responsive: true,
+        maintainAspectRatio: true,
         legend: false,
     }
 });
@@ -98,6 +100,8 @@ var mobileUsersChart = new Chart(mobileUsers, {
         ]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: true,
         legend: {
             position: 'right',
             labels: {
@@ -113,3 +117,6 @@ var mobileUsersChart = new Chart(mobileUsers, {
 //--------------------------------end daily traffic chart---------------------------------
 //--------------------------------end daily traffic chart---------------------------------
 //--------------------------------end daily traffic chart---------------------------------
+window.addEventListener('resize', e => {
+    chartDailyTraffic.resize();
+});
