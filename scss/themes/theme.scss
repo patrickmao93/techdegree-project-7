@@ -44,15 +44,32 @@
 .main {
     &__topbar {
         background: $color-tertiary;
-        border-bottom: 1px solid $color-border;
+
+        .tab {
+            border-right: 1px solid $color-border;
+            border-bottom: 1px solid white;
+            background: $color-secondary;
+            text-decoration: none;
+            color: $font-color-secondary;
+            font-family: $font-primary;
+        }   
+    }
+
+    &__content {
+
+        .icn-close {
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .icn-close:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    .message {
+        background: $color-primary;
+        color: $font-color-primary;
+        font-family: $font-primary;
     }
 }
 
-.tab {
-    border-right: 1px solid $color-border;
-    border-bottom: 1px solid white;
-    background: $color-secondary;
-    text-decoration: none;
-    color: $font-color-secondary;
-    font-family: $font-primary;
-}

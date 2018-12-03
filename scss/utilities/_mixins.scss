@@ -23,7 +23,7 @@
     }
 }
 
-@mixin roundy($dia) {
+@mixin roundy($dia:auto) {
     width: $dia;
     height: $dia;
     border-radius: 50%;

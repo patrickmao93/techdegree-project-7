@@ -25,6 +25,8 @@
 
 .main {
     display: grid;
+    grid-gap: 1px;
+    background: $color-border;
     grid-template-rows: 60px 1fr;
     grid-template-areas:
         "topbar"

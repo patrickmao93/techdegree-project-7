@@ -1,0 +1,7 @@
+%widget {
+    padding: 5px;
+    background: white;
+    @include media('md') {
+        padding: 20px;
+    }
+}

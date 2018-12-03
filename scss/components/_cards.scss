@@ -1,0 +1,22 @@
+.card {
+    flex: 1;
+    @include flex();
+    &-social {
+        border: 1px solid $color-border;
+        border-radius: 4px;
+
+        &__header {
+            display: inline-block;
+        }
+
+        .social-svg-wrapper {
+            @include roundy(80px);
+            padding: 20px;
+            background: $color-primary;
+            .svg {
+                fill: $color-primary;
+                display: inline-block;
+            }
+        }
+    }
+}
