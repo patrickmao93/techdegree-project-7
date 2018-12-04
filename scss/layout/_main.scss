@@ -31,9 +31,9 @@
     }
 
     &__content {
+        max-height: calc(100vh - 201px);
         grid-area: content;
         position: relative;
-        max-height: calc(100vh - 141px);
         left: auto;
         right: auto;
         display: grid;
@@ -63,6 +63,10 @@
                 "new-members recent-activity"
                 "message-user settings";    
         }
+
+        @include media('lg') {
+            max-height: calc(100vh - 141px);
+        }
         
         .message {
             display: none;
@@ -78,6 +82,7 @@
             transition: 0.4s ease;
         }
 
+        //charts
         .traffic {
             @extend %widget;
             grid-area: traffic;
@@ -93,7 +98,6 @@
         .social-stats {
             @extend %widget;
             grid-area: social-stats;
-            @include flex($just: space-between, $wrap: wrap);
         }
         .new-members {
             @extend %widget;
@@ -115,14 +119,32 @@
 
     .chart-header {
         margin: 20px 10px;
+        @include flex();
         font-family: $font-primary;
-        color: $font-color-secondary;
-        font-weight: bold;
+
+        &__header {
+            margin-right: auto;
+            font-weight: bold;
+        }
+
+        &__options {
+            @include flex();
+            &__item {
+                cursor: pointer;
+                padding: 8px;
+                display: inline-block;
+                border-radius: 16px;
+            }
+        }
     }
 
     .chart-wrapper {
         position: relative;
         width: 100%;
+    }
+
+    .chart-social-wrapper {
+        @include flex($just: space-between, $wrap: wrap);
     }
 }
 

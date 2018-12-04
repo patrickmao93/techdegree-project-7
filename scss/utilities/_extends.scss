@@ -1,7 +1,4 @@
 %widget {
-    padding: 5px;
-    background: white;
-    @include media('md') {
-        padding: 20px;
-    }
+    background: $color-secondary;
+    padding: 20px 20px 40px 20px;
 }

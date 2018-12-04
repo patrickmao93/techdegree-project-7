@@ -71,5 +71,34 @@
         color: $font-color-primary;
         font-family: $font-primary;
     }
+
+    .chart-header {
+        color: $font-color-tertiary;
+
+        &__options {
+            &__item {
+                &--active {
+                    background: $color-success;
+                    color: $font-color-primary;
+                }
+            }
+        }
+    }
 }
 
+.card {
+    &-social {
+        &__icon {
+            background: $color-primary;
+        }
+        &__content {
+            &__header {
+                color: $color-primary
+            }
+
+            &__stat {
+                color: $font-color-secondary;
+            }
+        }
+    }
+}
