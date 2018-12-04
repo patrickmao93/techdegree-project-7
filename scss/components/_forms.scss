@@ -1,0 +1,17 @@
+.message-form {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &__search,
+    &__message {
+        @extend %greybox;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 14px 20px;
+        border-radius: 4px;
+    }
+
+    &__search {
+        color: $font-color-tertiary;
+    }
+}

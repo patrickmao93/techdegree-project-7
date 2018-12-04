@@ -22,7 +22,7 @@
             </div>
 
             <div class="header__user">
-                <img class="user-thumbnail" src="media/images/member-2.jpg" alt="member thumbnail">
+                <img class="user-thumbnail" src="media/images/member-4.jpg" alt="member thumbnail">
                 <span class="user-name">Jon Snow</span>
             </div>
         </header>
@@ -30,15 +30,19 @@
         <nav class="sidebar">
             <div class="sidebar__icon sidebar__icon--active">
                 <img class="icon" src="media/icons/icon-dashboard.svg" alt="dashboard icon">
-            </div>
-            <div class="sidebar__icon">
-                <img class="icon" src="media/icons/icon-members.svg" alt="members icon">
+                <span class="sidebar__icon__desc">Traffic</span>
             </div>
             <div class="sidebar__icon">
                 <img class="icon" src="media/icons/icon-visits.svg" alt="visits icon">
+                <span class="sidebar__icon__desc">Daily Data</span>
+            </div>
+            <div class="sidebar__icon">
+                <img class="icon" src="media/icons/icon-members.svg" alt="members icon">
+                <span class="sidebar__icon__desc">Members</span>
             </div>
             <div class="sidebar__icon">
                 <img class="icon" src="media/icons/icon-settings.svg" alt="setting icon">
+                <span class="sidebar__icon__desc">Settings</span>
             </div>
         </nav>
 
@@ -207,15 +211,81 @@
                     <div class="chart-header">
                         <h2 class="chart-header__header">RECENT ACTIVITY</h2>
                     </div>
+                    <div class="chart-wrapper">
+                        <ul class="activities">
+                            <li class="activities__activity">
+                                <div class="activities__activity__thumbnail-wrapper">
+                                    <img src="media/images/member-1.jpg" alt="activity1">
+                                </div>
+                                <div class="activities__activity__info">
+                                    <h3 class="activities__activity__info__title"><a href="">Victoria Chambers</a>
+                                        commented on ChartApp's SEO Tips</h3>
+                                    <span class="activities__activity__info__timestamp">4 hours ago</span>
+                                </div>
+                            </li>
+                            <li class="activities__activity">
+                                <div class="activities__activity__thumbnail-wrapper">
+                                    <img src="media/images/member-1.jpg" alt="activity1">
+                                </div>
+                                <div class="activities__activity__info">
+                                    <h3 class="activities__activity__info__title"><a href="">Victoria Chambers</a>
+                                        commented on ChartApp's SEO Tips</h3>
+                                    <span class="activities__activity__info__timestamp">4 hours ago</span>
+                                </div>
+                            </li>
+                            <li class="activities__activity">
+                                <div class="activities__activity__thumbnail-wrapper">
+                                    <img src="media/images/member-1.jpg" alt="activity1">
+                                </div>
+                                <div class="activities__activity__info">
+                                    <h3 class="activities__activity__info__title"><a href="">Victoria Chambers</a>
+                                        commented on ChartApp's SEO Tips</h3>
+                                    <span class="activities__activity__info__timestamp">4 hours ago</span>
+                                </div>
+                            </li>
+                            <li class="activities__activity">
+                                <div class="activities__activity__thumbnail-wrapper">
+                                    <img src="media/images/member-1.jpg" alt="activity1">
+                                </div>
+                                <div class="activities__activity__info">
+                                    <h3 class="activities__activity__info__title"><a href="">Victoria Chambers</a>
+                                        commented on ChartApp's SEO Tips</h3>
+                                    <span class="activities__activity__info__timestamp">4 hours ago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="message-user">
                     <div class="chart-header">
                         <h2 class="chart-header__header">MESSAGE USER</h2>
                     </div>
+                    <form id="message-form" class="message-form" action="">
+                        <input class="message-form__search" type="text" placeholder="Search for User">
+                        <textarea class="message-form__message" name="message" id="messsage" cols="30" rows="10" placeholder="Message for User"></textarea>
+                    </form>
                 </div>
                 <div class="settings">
                     <div class="chart-header">
                         <h2 class="chart-header__header">SETTINGS</h2>
+                    </div>
+                    <div class="settings-wrapper">
+                        <label for="sendNotification">Send Email Notification</label>
+                        <div id="toggle1" class="toggle">
+                            <div class="toggle__slider">
+                                <span class="toggle__slider__on">ON</span>
+                                <div class="toggle__slider__handle"></div>
+                                <span class="toggle__slider__off">OFF</span>
+                            </div>
+                        </div>
+                        <input id="sendNotification" name="notification" type="checkbox" hidden>
+                        <label for="profilePublic">Set Profile to Public</label>
+                        <input id="profilePublic" name="public-profile" type="checkbox" hidden>
+                        <select id="timezone" name="timezone">
+                            <option value="">Select Timezone</option>
+                            <option value="">Timezone 1</option>
+                            <option value="">Timezone 2</option>
+                        </select>
                     </div>
                 </div>
             </div>

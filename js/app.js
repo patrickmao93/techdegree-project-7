@@ -178,3 +178,21 @@ const mobileUsersChart = new Chart(mobileUsers, {
 window.addEventListener('resize', e => {
     chartDailyTraffic.resize();
 });
+
+//--------------------------------toggle button ------------------------------------------
+
+
+let toggleState1 = true;
+const toggle1 = document.getElementById('toggle1');
+toggle1.addEventListener('click', e => {
+    let button = e.currentTarget;
+    if (toggleState1 === true) {
+        button.children[0].style.left = '-46px';
+        button.children[0].style.background = '#B3B3B3';
+        toggleState1 = false;
+    } else {
+        button.children[0].style.left = '0px';
+        button.children[0].style.background = '#7FDC85';
+        toggleState1 = true;
+    }
+});

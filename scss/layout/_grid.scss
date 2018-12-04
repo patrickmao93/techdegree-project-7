@@ -15,7 +15,7 @@
 
     @include media('lg') {
         grid-template-rows: 80px 1fr;
-        grid-template-columns: 70px 1fr;
+        grid-template-columns: 180px 1fr;
         grid-template-areas: 
             "header header"
             "sidebar main";

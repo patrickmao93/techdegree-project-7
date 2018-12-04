@@ -3,20 +3,29 @@
     grid-area: sidebar;
 
     &__icon {
+        @include flex();
         cursor: pointer;
-        padding: 10px;
+        padding: 10px 20px;
 
         @include media('lg') {
             width: 100%;
             margin-top: 20px;
         }
+
+        &__desc {
+            display: none;
+
+            @include media('md') {
+                display: block;
+                font-family: $font-primary;
+                color: $font-color-primary-dark;
+                display: block;
+                padding-left: 20px;
+            }
+        }
     }
     
     @include flex($just: space-evenly);
-
-    @include media('md') {
-        
-    }
 
     @include media('lg') {
         @include flex($just: flex-start, $dir: column);

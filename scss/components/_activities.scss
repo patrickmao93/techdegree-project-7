@@ -1,0 +1,38 @@
+.activities {
+    font-family: $font-primary;
+    &__activity {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include flex();
+        border-bottom: 1px solid $color-border;
+        &__thumbnail-wrapper {
+            @include roundy(40px);
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__info {
+            padding: 10px;
+            margin-right: auto;
+            &__title {
+                display: block;
+                a {
+                    text-decoration: none;
+                    color: $font-color-link;
+                }
+            }
+            &__timestamp {
+                font-size: 0.8em;
+                color: $font-color-tertiary;
+                line-height: 1.3;
+                display: block;
+            }
+        }
+    }
+
+    &__activity:last-child {
+        border-bottom: none;
+    }
+}

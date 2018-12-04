@@ -2,3 +2,9 @@
     background: $color-secondary;
     padding: 20px 20px 40px 20px;
 }
+
+%greybox {
+    border: 1px solid $color-border;
+    background: $color-light;
+    font-family: $font-primary;
+}

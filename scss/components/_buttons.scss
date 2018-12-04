@@ -2,7 +2,6 @@
     width: 28px;
     height: 28px;
     display: block;
-    margin: auto;
 }
 
 .tab {
@@ -16,3 +15,29 @@
     pointer-events: none;
 }
 
+.toggle {
+    font-family: $font-primary;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    overflow: hidden;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid $color-border;
+    &__slider {
+        transition: 0.2s ease;
+        position: relative;
+        width: 130px;
+        height: 28px;
+        background: $color-primary;
+        @include flex($just: space-between);
+        padding-left: 14px;
+        padding-right: 14px;
+        &__handle {
+            @include roundy(22px);
+            background: white;
+            border: 1px solid $color-border;
+        }
+    }
+}
