@@ -1,5 +1,6 @@
 .main {
     grid-area: main;
+    position: relative;
     display: grid;
     grid-template-rows: 60px 1fr;
     grid-template-areas: 
@@ -8,24 +9,13 @@
 
     &__topbar {
         grid-area: topbar;
-        @include flex($align: center);
-
-        .tab {
-            position: relative;
-            bottom: -1px;
-        }
+        @include flex();
 
         .search {
-            @include flex($align: center);
             margin-left: auto;
 
             &__input {
                 margin-left: 26px;
-            }
-
-            &__btn {
-                position: relative;
-                right: 29px;
             }
         }
     }
@@ -69,19 +59,12 @@
         }
         
         .message {
-            display: none;
-            position: absolute;
-            width: 90%; 
-            
-            .icn-close {
-                position: absolute;
-                right: 18px;
-                top: 17px;
-            }
-
-            transition: 0.4s ease;
+            position: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 100000;
         }
-
+    
         //charts
         .traffic {
             @extend %widget;
@@ -98,6 +81,9 @@
         .social-stats {
             @extend %widget;
             grid-area: social-stats;
+            .chart-social-wrapper {
+                @include flex($just: space-between, $wrap: wrap);
+            }
         }
         .new-members {
             @extend %widget;
@@ -142,12 +128,12 @@
         position: relative;
         width: 100%;
     }
-
-    .chart-social-wrapper {
-        @include flex($just: space-between, $wrap: wrap);
-    }
 }
 
 canvas {
     max-width: 100%;
+}
+
+.awesomplete {
+	width: 100%;
 }

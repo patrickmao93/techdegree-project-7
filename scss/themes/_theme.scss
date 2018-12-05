@@ -102,3 +102,15 @@
         }
     }
 }
+
+.button {
+    &-full,
+    &-half {
+        background: $color-primary;
+        color: $font-color-primary;
+    }
+
+    &--cancel {
+        background: $color-disable;
+    }
+}

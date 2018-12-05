@@ -7,16 +7,113 @@ const traffic = document.getElementById("chartTraffic").getContext('2d');
 const trafficChartOptions = document.getElementById('trafficChartOptions');
 const dailyTraffic = document.getElementById("chartDailyTraffic").getContext('2d');
 const mobileUsers = document.getElementById("chartMobileUsers").getContext('2d');
+const messageForm = document.getElementById('message-form');
+const toggle1 = document.getElementById('toggle1');
+const toggle2 = document.getElementById('toggle2');
+const saveBtn = document.getElementById('saveBtn');
+const sendNotification = document.getElementById('sendNotification');
+const profilePublic = document.getElementById('profilePublic');
 let searchFocusState = false;
 
+//////////////////////////////////////////////////
+//function showMessage
+//input: name - user name the message is sent to 
+//       type - message type
+//return: none
+//////////////////////////////////////////////////
+const showMessage = (name = '', type) => {
+    let color;
+    switch (type) {
+        case 'success':
+            message.children[0].textContent = 'Message successfully sent to ' + name;
+            color = '#7DC991';
+            break;
+
+        default:
+            color = '#dfc75f';
+            message.children[0].innerHTML = '<span class="bold">Alert: </span>You know nothing about charts, Jon Snow.'
+            break;
+    }
+    message.style.borderLeftColor = color;
+    message.classList.add('message--show');
+}   
+
+
+//////////////////////////////////////////////////
+//function hideMessage
+//input: none
+//return: none
+//////////////////////////////////////////////////
+const hideMessage = () => {
+    message.classList.remove('message--show');
+}
+
+
+//////////////////////////////////////////////////
+//function setChartData
+//input: chartObject, label string array, data array, option button index
+//return: none
+//////////////////////////////////////////////////
+const setChartData = (chart, labelArr, dataArr, index) => {
+    chart.data.labels = labelArr[index];
+    chart.data.datasets[0].data = dataArr[index];
+}
+
+
+const toggleButtonHandler = (button, checkbox) => {
+    if (button.toggleState) {
+        button.children[0].style.left = '-46px';
+        button.children[0].style.background = '#B3B3B3';
+        button.toggleState = false;
+        checkbox.removeAttribute('checked');
+    } else {
+        button.children[0].style.left = '0px';
+        button.children[0].style.background = '#727ABF';
+        button.toggleState = true;
+        checkbox.setAttribute('checked', true);
+    }
+}
+
+const updateToggleButton = (button, checkbox) => {
+    if (button.toggleState) {
+        button.children[0].style.left = '0px';
+        button.children[0].style.background = '#727ABF';
+        button.toggleState = true;
+        checkbox.setAttribute('checked', true);
+    } else {
+        button.children[0].style.left = '-46px';
+        button.children[0].style.background = '#B3B3B3';
+        button.toggleState = false;
+        checkbox.removeAttribute('checked');
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//-------------------------------initialization---------------------------------
+////////////////////////////////////////////////////////////////////////////////
 //show message when page loads
-message.style.display = 'block';
+showMessage();
+
+//if first time here, set both toggle to 'on'
+if (localStorage.sendNotification === undefined || localStorage.profilePublic === undefined) { 
+    localStorage.sendNotification = true;
+    localStorage.profilePublic = true;
+}
+//then save the state in memory
+toggle1.toggleState = localStorage.sendNotification;
+toggle2.toggleState = localStorage.profilePublic;
+updateToggleButton(toggle1, sendNotification);
+updateToggleButton(toggle2, profilePublic);
+
+//////////////////////////////////////////////////////////////////////////////////
+//-------------------------UI nteraction handlers---------------------------------
+//////////////////////////////////////////////////////////////////////////////////
 //close message when user clicks on x
 icnClose.addEventListener('click', e => {
-    message.style.display = 'none';
+    hideMessage();
 });
 
-//search hover state and edit state functions
+//search hover state and edit state functionsalities
 search.addEventListener('mouseenter', e => {
     search.classList.add('search__input--is-hovered');
 });
@@ -35,6 +132,39 @@ search.addEventListener('focusout', e => {
     search.classList.remove('search__input--is-focused');
 });
 
+saveBtn.addEventListener('click', e => {
+    localStorage.sendNotification = sendNotification.hasAttribute('checked');
+    localStorage.profilePublic = profilePublic.hasAttribute('checked');
+});
+
+//On form submit, inform user message is sent
+messageForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('sendName').value;
+    const message = document.getElementById('sendMessage');
+    showMessage(name, 'success');
+    //hide message after 3 secs
+    setTimeout(() => {
+        hideMessage();
+    }, 3000);
+});
+
+//toggle button 1 functionality
+toggle1.addEventListener('click', e => {
+    toggleButtonHandler(toggle1, sendNotification);
+    localStorage.sendNotification = toggle1.toggleState;
+});
+//toggle button 2 functionality
+toggle2.addEventListener('click', e => {
+    toggleButtonHandler(toggle2, profilePublic);
+    localStorage.profilePublic = toggle2.toggleState;
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//-----------------------------Chart initialization-------------------------------
+//////////////////////////////////////////////////////////////////////////////////
 //--------------------------------traffic chart---------------------------------
 const trafficLabels = [
     ["0:00", "2:00", "4:00", "6:00", "8:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00", "22:00"],
@@ -73,11 +203,6 @@ const chartTraffic = new Chart(traffic, {
         legend: false,
     }
 });
-
-function setChartData(chart, labelArr, dataArr, index) {
-    chart.data.labels = labelArr[index];
-    chart.data.datasets[0].data = dataArr[index];
-}
 
 //traffic chart "display by time" options
 trafficChartOptions.addEventListener('click', e => {
@@ -172,27 +297,8 @@ const mobileUsersChart = new Chart(mobileUsers, {
 });
 //--------------------------------end mobile users chart---------------------------------
 
-//--------------------------------end daily traffic chart---------------------------------
-//--------------------------------end daily traffic chart---------------------------------
-//--------------------------------end daily traffic chart---------------------------------
+//When 'responsive' option is set to 'true', the charts are supposed to resize themselves upon window resize. 
+//This part exists because there is a weird bug prevents the charts to resize properly when window is sized down
 window.addEventListener('resize', e => {
     chartDailyTraffic.resize();
-});
-
-//--------------------------------toggle button ------------------------------------------
-
-
-let toggleState1 = true;
-const toggle1 = document.getElementById('toggle1');
-toggle1.addEventListener('click', e => {
-    let button = e.currentTarget;
-    if (toggleState1 === true) {
-        button.children[0].style.left = '-46px';
-        button.children[0].style.background = '#B3B3B3';
-        toggleState1 = false;
-    } else {
-        button.children[0].style.left = '0px';
-        button.children[0].style.background = '#7FDC85';
-        toggleState1 = true;
-    }
 });

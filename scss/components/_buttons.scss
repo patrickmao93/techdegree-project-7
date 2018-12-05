@@ -1,3 +1,22 @@
+.button {
+    &-full {
+        @extend %button;
+        width: 100%;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &-half {
+        @extend %button;
+        width: 48%;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+
 .icon {
     width: 28px;
     height: 28px;
@@ -9,13 +28,9 @@
     height: 61px;
 }
 
-.btn-search {
-    background: $color-secondary;
-    border: none;
-    pointer-events: none;
-}
-
 .toggle {
+    user-select: none;
+    cursor: pointer;
     font-family: $font-primary;
     font-size: 0.8em;
     font-weight: bold;
@@ -25,6 +40,7 @@
     height: 30px;
     border-radius: 15px;
     border: 1px solid $color-border;
+    
     &__slider {
         transition: 0.2s ease;
         position: relative;

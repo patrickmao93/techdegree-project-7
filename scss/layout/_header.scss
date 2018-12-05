@@ -3,17 +3,23 @@
     @include flex();
 
     &__notification {
-        height: 24px;
-        width: 24px;
-        display: block;
-        margin: 20px;
+        @include roundy(44px);
+        cursor: pointer;
+        padding: 10px;
+        margin-right: 12px;
+        display: block; 
         position: relative;
+    }
+
+    &__notification:hover .bell {
+        transition: 0.3s ease;
+        fill: $color-success;
     }
 
     .notification-dot {
         position: absolute;
-        top: -2px;
-        right: -2px;
+        top: 8px;
+        right: 10px;
         @include roundy(6px);
     }
 

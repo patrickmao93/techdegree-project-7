@@ -7,4 +7,18 @@
     border: 1px solid $color-border;
     background: $color-light;
     font-family: $font-primary;
+    border-radius: $border-radius;
+    padding: 14px;
+    width: 100%;
+}
+
+%button {
+    font-weight: bold;
+    display: block;
+    padding: 16px;
+    border-radius: $border-radius;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
 }

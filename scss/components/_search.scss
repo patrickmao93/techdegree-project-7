@@ -35,6 +35,8 @@
         pointer-events: none;
         background: transparent;
         border: none;
+        position: relative;
+        right: 29px;
     }
 
     &__btn:focus {

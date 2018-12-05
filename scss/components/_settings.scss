@@ -1,0 +1,17 @@
+.setting {
+    font-family: $font-primary;
+    color: $font-color-secondary;
+    @include flex($dir: column);
+ 
+    &__group {
+        width: 100%;
+        @include flex($just: space-between);
+        padding: 10px;
+        &__label {
+            margin-right: auto;
+        }
+        &:last-child {
+            margin-top: auto;
+        }
+    }
+}
