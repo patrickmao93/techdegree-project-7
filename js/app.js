@@ -42,7 +42,6 @@ const mobileUsers = document.getElementById("chartMobileUsers").getContext('2d')
 const messageForm = document.getElementById('message-form');
 let searchFocusState = false;
 
-
 //////////////////////////////////////////////////
 //function showMessage
 //input: name - user name the message is sent to 
@@ -106,12 +105,20 @@ const toggleBtn2 = new ToggleButton(toggle2, localStorage.profilePublic);
 //-------------------------UI nteraction handlers---------------------------------
 //////////////////////////////////////////////////////////////////////////////////
 for (let i = 0; i < nav.children.length; i++) {
-    nav.children[i].addEventListener('click', e => {
+    let navItem = nav.children[i];
+    navItem.addEventListener('click', e => {
         let targetDiv = document.getElementById('widget' + (i + 1));
         targetDiv.scrollIntoView({
             behavior: 'smooth', 
             block: 'start'
         });
+        
+        for (let j = 0; j < nav.children.length; j++) {
+            let navItem = nav.children[j];
+            navItem.classList.remove('sidebar__icon--active');
+        }
+
+        navItem.classList.add('sidebar__icon--active');
     });
 }
 
