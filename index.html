@@ -32,12 +32,12 @@
             </div>
 
             <div class="header__user">
-                <img class="user-thumbnail" src="media/images/member-4.jpg" alt="member thumbnail">
+                <img class="user-thumbnail" src="media/images/jon-snow.png" alt="member thumbnail">
                 <span class="user-name">Jon Snow</span>
             </div>
         </header>
 
-        <nav class="sidebar">
+        <nav id="nav" class="sidebar">
             <div class="sidebar__icon sidebar__icon--active">
                 <img class="icon" src="media/icons/icon-dashboard.svg" alt="dashboard icon">
                 <span class="sidebar__icon__desc">Traffic</span>
@@ -69,7 +69,7 @@
                     <h2></h2>
                     <i id="icnClose" class="fas fa-times icn-close"></i>
                 </div>
-                <div class="traffic">
+                <div id='widget1' class="traffic">
                     <div class="chart-header">
                         <h2 class="chart-header__header">TRAFFIC</h2>
                         <ul id="trafficChartOptions" class="chart-header__options">
@@ -83,7 +83,7 @@
                         <canvas id="chartTraffic"></canvas>
                     </div>
                 </div>
-                <div class="daily-traffic">
+                <div id="widget2" class="daily-traffic">
                     <div class="chart-header">
                         <h2 class="chart-header__header">DAILY TRAFFIC</h2>
                     </div>
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="new-members">
+                <div id='widget3' class="new-members">
                     <div class="chart-header">
                         <h2 class="chart-header__header">NEW MEMBERS</h2>
                     </div>
@@ -278,14 +278,13 @@
                         <button class="button-full">SEND</button>
                     </form>
                 </div>
-                <div class="settings">
+                <div id='widget4' class="settings">
                     <div class="chart-header">
                         <h2 class="chart-header__header">SETTINGS</h2>
                     </div>
                     <div class="setting">
                         <div class="setting__group">
                             <label class="setting__group__label" for="sendNotification">Send Email Notification</label>
-                            <input id="sendNotification" name="notification" type="checkbox" hidden checked="true">
                             <div id="toggle1" class="setting__group__toggle toggle">
                                 <div class="toggle__slider">
                                     <span class="toggle__slider__on">ON</span>
@@ -297,7 +296,6 @@
 
                         <div class="setting__group">
                             <label class="setting__group__label" for="profilePublic">Set Profile to Public</label>
-                            <input id="profilePublic" name="public-profile" type="checkbox" hidden checked="true">
                             <div id="toggle2" class="setting__group__toggle toggle">
                                 <div class="toggle__slider">
                                     <span class="toggle__slider__on">ON</span>

@@ -1,6 +1,38 @@
 "use strict";
 
-const message = document.getElementById('message');
+class ToggleButton {
+    constructor(dom, defaultState = 'on') {
+        this.dom = dom;
+        this.state = defaultState;
+        if (defaultState === 'on') {
+            this.dom.children[0].style.left = '0px';
+            this.dom.children[0].style.background = '#727ABF';
+        } else {
+            this.dom.children[0].style.left = '-46px';
+            this.dom.children[0].style.background = '#B3B3B3';
+        }
+    }
+
+    toggle() {
+        if (this.state === 'on') {
+            this.state = 'off';
+            this.dom.children[0].style.left = '-46px';
+            this.dom.children[0].style.background = '#B3B3B3';
+        } else {
+            this.state = 'on';
+            this.dom.children[0].style.left = '0px';
+            this.dom.children[0].style.background = '#727ABF';
+        }
+    }
+}
+const toggle1 = document.getElementById('toggle1');
+const toggle2 = document.getElementById('toggle2');
+const checkbox1 = document.getElementById('sendNotification');
+const checkbox2 = document.getElementById('profilePublic');
+const saveBtn = document.getElementById('saveBtn');
+
+const nav = document.getElementById('nav');
+const alert = document.getElementById('message');
 const search = document.getElementById("search");
 const icnClose = document.getElementById('icnClose');
 const traffic = document.getElementById("chartTraffic").getContext('2d');
@@ -8,12 +40,8 @@ const trafficChartOptions = document.getElementById('trafficChartOptions');
 const dailyTraffic = document.getElementById("chartDailyTraffic").getContext('2d');
 const mobileUsers = document.getElementById("chartMobileUsers").getContext('2d');
 const messageForm = document.getElementById('message-form');
-const toggle1 = document.getElementById('toggle1');
-const toggle2 = document.getElementById('toggle2');
-const saveBtn = document.getElementById('saveBtn');
-const sendNotification = document.getElementById('sendNotification');
-const profilePublic = document.getElementById('profilePublic');
 let searchFocusState = false;
+
 
 //////////////////////////////////////////////////
 //function showMessage
@@ -21,22 +49,22 @@ let searchFocusState = false;
 //       type - message type
 //return: none
 //////////////////////////////////////////////////
-const showMessage = (name = '', type) => {
+const showMessage = (message, type) => {
     let color;
     switch (type) {
         case 'success':
-            message.children[0].textContent = 'Message successfully sent to ' + name;
+            alert.children[0].textContent = message;
             color = '#7DC991';
             break;
 
         default:
+            alert.children[0].innerHTML = '<span class="bold">Alert: </span>You know nothing about charts, Jon Snow.'
             color = '#dfc75f';
-            message.children[0].innerHTML = '<span class="bold">Alert: </span>You know nothing about charts, Jon Snow.'
             break;
     }
-    message.style.borderLeftColor = color;
-    message.classList.add('message--show');
-}   
+    alert.style.borderLeftColor = color;
+    alert.classList.add('message--show');
+}
 
 
 //////////////////////////////////////////////////
@@ -45,7 +73,7 @@ const showMessage = (name = '', type) => {
 //return: none
 //////////////////////////////////////////////////
 const hideMessage = () => {
-    message.classList.remove('message--show');
+    alert.classList.remove('message--show');
 }
 
 
@@ -59,35 +87,6 @@ const setChartData = (chart, labelArr, dataArr, index) => {
     chart.data.datasets[0].data = dataArr[index];
 }
 
-
-const toggleButtonHandler = (button, checkbox) => {
-    if (button.toggleState) {
-        button.children[0].style.left = '-46px';
-        button.children[0].style.background = '#B3B3B3';
-        button.toggleState = false;
-        checkbox.removeAttribute('checked');
-    } else {
-        button.children[0].style.left = '0px';
-        button.children[0].style.background = '#727ABF';
-        button.toggleState = true;
-        checkbox.setAttribute('checked', true);
-    }
-}
-
-const updateToggleButton = (button, checkbox) => {
-    if (button.toggleState) {
-        button.children[0].style.left = '0px';
-        button.children[0].style.background = '#727ABF';
-        button.toggleState = true;
-        checkbox.setAttribute('checked', true);
-    } else {
-        button.children[0].style.left = '-46px';
-        button.children[0].style.background = '#B3B3B3';
-        button.toggleState = false;
-        checkbox.removeAttribute('checked');
-    }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 //-------------------------------initialization---------------------------------
 ////////////////////////////////////////////////////////////////////////////////
@@ -95,19 +94,27 @@ const updateToggleButton = (button, checkbox) => {
 showMessage();
 
 //if first time here, set both toggle to 'on'
-if (localStorage.sendNotification === undefined || localStorage.profilePublic === undefined) { 
-    localStorage.sendNotification = true;
-    localStorage.profilePublic = true;
+if (localStorage.sendNotification === undefined || localStorage.profilePublic === undefined) {
+    localStorage.sendNotification = 'on';
+    localStorage.profilePublic = 'off';
 }
-//then save the state in memory
-toggle1.toggleState = localStorage.sendNotification;
-toggle2.toggleState = localStorage.profilePublic;
-updateToggleButton(toggle1, sendNotification);
-updateToggleButton(toggle2, profilePublic);
+//initialize toggle buttons
+const toggleBtn1 = new ToggleButton(toggle1, localStorage.sendNotification);
+const toggleBtn2 = new ToggleButton(toggle2, localStorage.profilePublic);
 
 //////////////////////////////////////////////////////////////////////////////////
 //-------------------------UI nteraction handlers---------------------------------
 //////////////////////////////////////////////////////////////////////////////////
+for (let i = 0; i < nav.children.length; i++) {
+    nav.children[i].addEventListener('click', e => {
+        let targetDiv = document.getElementById('widget' + (i + 1));
+        targetDiv.scrollIntoView({
+            behavior: 'smooth', 
+            block: 'start'
+        });
+    });
+}
+
 //close message when user clicks on x
 icnClose.addEventListener('click', e => {
     hideMessage();
@@ -132,17 +139,12 @@ search.addEventListener('focusout', e => {
     search.classList.remove('search__input--is-focused');
 });
 
-saveBtn.addEventListener('click', e => {
-    localStorage.sendNotification = sendNotification.hasAttribute('checked');
-    localStorage.profilePublic = profilePublic.hasAttribute('checked');
-});
-
 //On form submit, inform user message is sent
 messageForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('sendName').value;
-    const message = document.getElementById('sendMessage');
-    showMessage(name, 'success');
+    const alertMsg = 'Message successfully sent to ' + name
+    showMessage(alertMsg, 'success');   
     //hide message after 3 secs
     setTimeout(() => {
         hideMessage();
@@ -151,15 +153,17 @@ messageForm.addEventListener('submit', e => {
 
 //toggle button 1 functionality
 toggle1.addEventListener('click', e => {
-    toggleButtonHandler(toggle1, sendNotification);
-    localStorage.sendNotification = toggle1.toggleState;
+    toggleBtn1.toggle();
 });
 //toggle button 2 functionality
 toggle2.addEventListener('click', e => {
-    toggleButtonHandler(toggle2, profilePublic);
-    localStorage.profilePublic = toggle2.toggleState;
+    toggleBtn2.toggle();
 });
 
+saveBtn.addEventListener('click', e => {
+    localStorage.sendNotification = toggleBtn1.state;
+    localStorage.profilePublic = toggleBtn2.state;
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////
