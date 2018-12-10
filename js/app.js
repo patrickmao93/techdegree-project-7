@@ -50,10 +50,14 @@ let searchFocusState = false;
 //////////////////////////////////////////////////
 const showMessage = (message, type) => {
     let color;
+    alert.children[0].textContent = message;
     switch (type) {
         case 'success':
-            alert.children[0].textContent = message;
             color = '#7DC991';
+            break;
+
+        case 'warning':
+            color = 'firebrick';
             break;
 
         default:
@@ -150,8 +154,18 @@ search.addEventListener('focusout', e => {
 messageForm.addEventListener('submit', e => {
     e.preventDefault();
     const name = document.getElementById('sendName').value;
-    const alertMsg = 'Message successfully sent to ' + name
-    showMessage(alertMsg, 'success');   
+    const message = document.getElementById('sendMessage').value;
+    console.log(message);
+    
+    let alertMsg;
+
+    if (name && message) {
+        alertMsg = 'Message successfully sent to ' + name;
+        showMessage(alertMsg, 'success'); 
+    } else {
+        alertMsg = 'Please check your input'
+        showMessage(alertMsg, 'warning'); 
+    }  
     //hide message after 3 secs
     setTimeout(() => {
         hideMessage();
