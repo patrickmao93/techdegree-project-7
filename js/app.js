@@ -129,6 +129,14 @@ if (!localStorage.sendNotification || !localStorage.profilePublic) {
 const toggleBtn1 = new ToggleButton(toggle1, localStorage.sendNotification);
 const toggleBtn2 = new ToggleButton(toggle2, localStorage.profilePublic);
 
+let selectedTimezone = null;
+if (!localStorage.timezone) {
+  selectedTimezone = 1;
+} else {
+  selectedTimezone = localStorage.timezone;
+  timezone.children[selectedTimezone].setAttribute("selected", true);
+}
+
 //////////////////////////////////////////////////////////////////////////////////
 //-------------------------UI nteraction handlers---------------------------------
 //////////////////////////////////////////////////////////////////////////////////
@@ -220,9 +228,14 @@ toggle2.addEventListener("click", e => {
   toggleBtn2.toggle();
 });
 
+timezone.addEventListener("change", e => {
+  selectedTimezone = timezone.value;
+});
+
 saveBtn.addEventListener("click", e => {
   localStorage.sendNotification = toggleBtn1.state;
   localStorage.profilePublic = toggleBtn2.state;
+  localStorage.timezone = selectedTimezone;
 });
 
 //////////////////////////////////////////////////////////////////////////////////
