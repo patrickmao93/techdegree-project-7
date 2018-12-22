@@ -18,7 +18,7 @@
         <header class="header">
             <h1 class="logo"><strong class="logo__strong">Chart</strong>App<span class="trademark">&trade;</span></h1>
             <div class="header__notification">
-                <svg class="notification-bell" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                <svg class="notification-bell" id="notificationBell" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
                     <g id="_x36__6_">
                         <g>
@@ -29,6 +29,16 @@
                 </svg>
 
                 <span class="notification-dot"></span>
+                <ul class="notifications" id="notifications">
+                    <li class="notifications__item">
+                        <h3>Some notification</h3>
+                        <p>Some description...</p>
+                    </li>
+                    <li class="notifications__item">
+                        <h3>Some notification</h3>
+                        <p>Some description...</p>
+                    </li>
+                </ul>
             </div>
 
             <div class="header__user">
@@ -307,9 +317,9 @@
 
                         <div class="setting__group">
                             <select id="timezone" class="input-box" name="timezone">
-                                <option value="">Select Timezone</option>
-                                <option value="">Timezone 1</option>
-                                <option value="">Timezone 2</option>
+                                <option value="SelectTimezone">Select Timezone</option>
+                                <option value="Timezone1">Timezone 1</option>
+                                <option value="Timezone2">Timezone 2</option>
                             </select>
                         </div>
                         <div class="setting__group">

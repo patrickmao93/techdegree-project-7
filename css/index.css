@@ -95,6 +95,26 @@
   display: block;
   position: relative;
 }
+.header__notification .notifications {
+  display: none;
+  font-family: "Varela", sans-serif;
+  position: absolute;
+  list-style: none;
+  background: white;
+  right: 0;
+  color: #6A6A6A;
+  width: 250px;
+  z-index: 10000;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+.header__notification .notifications__item {
+  padding: 15px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.header__notification .notifications__item p {
+  color: #A6A6A6;
+}
 .header__notification:hover .bell {
   transition: 0.3s ease;
   fill: #7FDC85;

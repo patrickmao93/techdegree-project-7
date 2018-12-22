@@ -1,45 +1,65 @@
 .header {
-    grid-area: header;
-    @include flex();
+  grid-area: header;
+  @include flex();
 
-    &__notification {
-        @include roundy(44px);
-        cursor: pointer;
-        padding: 10px;
-        margin-right: 12px;
-        display: block; 
-        position: relative;
-    }
+  &__notification {
+    @include roundy(44px);
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 12px;
+    display: block;
+    position: relative;
 
-    &__notification:hover .bell {
-        transition: 0.3s ease;
-        fill: $color-success;
-    }
-
-    .notification-dot {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        @include roundy(6px);
-    }
-
-    &__user {
-        padding-left: 20px;
-        padding-right: 20px;
-
-        .user-thumbnail,
-        .user-name {
-            display: inline-block;
-            vertical-align: middle;
-            
+    .notifications {
+      display: none;
+      font-family: $font-primary;
+      position: absolute;
+      list-style: none;
+      background: white;
+      right: 0;
+      color: $font-color-secondary;
+      width: 250px;
+      z-index: 10000;
+      box-shadow: 0 4px 16px -4px rgba($color: #000000, $alpha: 0.3);
+      border-radius: 4px;
+      &__item {
+        & p {
+          color: $font-color-tertiary;
         }
-
-        .user-name {
-            margin-left: 10px;
-            display: none;
-            @include media('md') {
-                display: inline-block;
-            }
-        }
+        padding: 15px;
+        border-bottom: 1px solid $color-border;
+      }
     }
+  }
+
+  &__notification:hover .bell {
+    transition: 0.3s ease;
+    fill: $color-success;
+  }
+
+  .notification-dot {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    @include roundy(6px);
+  }
+
+  &__user {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .user-thumbnail,
+    .user-name {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .user-name {
+      margin-left: 10px;
+      display: none;
+      @include media("md") {
+        display: inline-block;
+      }
+    }
+  }
 }
